@@ -1,0 +1,243 @@
+/* 
+Reseteamos los formatos y margenes de las páginas. Definiremos en la hoja de estilos todos
+los formatos que usemos 
+*/
+@import "reset.css";
+/* 
+Importamos desde Google Fonts la fuente que vamos a usar en nuestra página
+Configuramos la fuente a través de: 
+    font-family: 'Titillium Web', sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+/* Definimos los elementos de texto que vamos a usar en la página */
+a, p {
+    font-family: 'Titillium Web', sans-serif;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 300;
+}
+/* Aplicamos un fondo */
+#fondo {
+    background-image: url(../img/backgrounds/philippe-oursel-ZAF-rhUyESY-unsplash.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+}
+/* El contenedor principal será un flex en columnas donde vamos a definir las etiquetas semánticas */
+.edukiontzi-nagusia {
+    position: relative; /* Posición relativa, por si queremos incorporar un elemento absolute respecto a este contenedor */
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 0 20% 0 20%;
+    background-color: white;
+}
+/* 
+Definimos formato común que van a tener las etiquetas semánticas <header>, <nav> y <footer> 
+Mientras no indiquemos lo contrario, el display y la position la heredará de su elemento padre.
+*/
+header, nav, footer {
+    position: inherit;
+    display: inherit;
+    flex-direction: row; /* Valor por defecto en nuevas definicioes flex. No lo heredamos, pues queremos que en estos nuevos flex la dirección de los elementos sea en fila */
+    min-height: 10vh;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/* Configuramos el tamaño y margenes de la imagen del header que hará de logo */
+header img {
+    height: 8vh;
+    margin-left: 2%;
+    max-width: 100%; /* Hace que la imagen, al redimensionarse a la par que el navegador, no revose del máximo width que se ha asignado al flex */
+}
+/* Consulta IA: En un flex de 4 elementos <a>, quiero aplicar un hover o configuracion al elemento 1 y otro diferente a los elementos 2, 3 y 4.*/
+.menu a:not(:first-child) {
+    font-weight: 700;
+    margin: 2%; /* Margen de los elementos <a>. El primer elemento <a> tendrá un margen del 2% respecto al borde y de un 4% con su <a> */
+    font-size: 1rem; /* 1rem equivale a 16px */
+    padding: .5rem; /* padding de 8px al elemento <a> para dar aire al texto si hacemos un hover sobre él */
+    border-radius: .5rem;
+    border: .1rem solid black;
+}
+/* Aplicamos ahora una configuración distinta al primer elemento del flex */
+.menu a:first-child {
+    margin: 2%;
+    padding: .5rem;
+}
+/* Aplicamos un tamaño al icono que hará de home */
+.menu a img {
+    height: 3rem;
+}
+/* hover distintos para el 2,3 y 4 elemento */
+.menu a:not(:first-child):hover {
+    background-color: #2f2f2f;
+    color: white;
+    font-weight: 700;
+    transition: .8s;
+}
+/* hover del primer elemento */
+.menu a:first-child:hover {
+    transform: rotate(360deg); /* Un efecto al posicionarnos sobre el icono de home */
+    transition: transform 1s;
+}
+
+/* 
+Definimos <aside> con posicionamiento absoluto respecto al elemento padre (container-principal)
+*/
+aside {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    min-width: 3rem;
+    min-height: 10rem;
+    z-index: 1; /* Hacemos que quede por encima de elementos definidos previamente */
+    right: -3rem; /* Hacemos que se posicione fuera del container-principal, aunque lo tenemos como referencia */
+    top: 50vh;
+    background-color: white;
+    border-radius: 0 1rem 1rem 0;
+    align-items: center;
+    justify-content: center;
+}
+/* Definimos los tamaños de los iconos del <aside> */
+aside img {
+    width: 1.5rem;
+    margin: .3rem;
+}
+/* Resaltamos los iconos del <aside> si pasamos por encima el ratón */
+aside img:hover {
+    width: 3rem;
+    margin: .6rem;
+}
+/* Definimos tamaño y letra del pie de página. El tamaño y posicionamiento ya está difinido previamente */
+footer a {
+    font-size: .7rem;
+    margin-left: 2%;
+}
+/* Diferentes páginas usan un contenedor con algunas características comunes para prsentar información */
+.main-edukia, .albisteak-edukia, .gure-soinuak {
+    width: 90%;
+    margin: 5% auto;
+    padding: 1rem;
+}
+/* Configuración de las fotos que pueden ilustrar el contenido de <main> */
+.main-edukia img {
+    width: 40%;
+    float: left;
+    border: .1rem solid black;
+    margin-right: 1rem;
+}
+/* Configuración del texto que figurará en varias páginas */
+.main-edukia p, .albisteak-edukia p {
+    text-indent: 3%;
+    text-align: justify;
+    margin-top: 1rem;
+}
+/* Configuración del margen y anchura del elemento <audio>*/
+.main-edukia audio {
+    margin: 1rem auto;
+    width: 100%; /* Obligamos a que ocupe el 100% del espacio del contenedor para que se posicione por debajo de la ilustración tras agotar el float y mantenga un tamaña adecuado al redimensionar el navegador */
+}
+.albisteak-edukia {
+    border-bottom: .1rem solid black;
+}
+/* Indicamos como flota una imagen respecto a su texto y un elemento iframe */
+.ezkerra img {
+    width: 25%;
+    float: left;
+    border: .1rem solid black;
+    margin-right: 1rem;
+}
+.ezkerra iframe {
+    width: 280px;
+    height: auto;
+    float: left;
+    border: .1rem solid black;
+    margin-right: 1rem;
+    max-width: 90%;
+}
+.eskuma img {
+    width: 25%;
+    float: right;
+    border: .1rem solid black;
+    margin-left: 1rem;
+}
+.eskuma iframe {
+    width: 280px;
+    max-width: 90%;
+    height: auto;
+    float: right;
+    border: .1rem solid black;
+    margin-left: 1rem;
+}
+
+.ezkerra p a, .eskuma p a {
+    text-decoration: underline;
+}
+
+/* 
+Configurará el contenedor donde se mostraran varios links para navegar
+Así como el tamaño que ocuparán las imágenes, lugar, margen, letra...
+*/
+.gure-soinuak {
+    display: inherit;
+    position: inherit;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: .1rem solid black;
+}
+.gure-soinuak img {
+    width: 50%;
+    float:initial;
+    border: .1rem solid black;
+}
+.gure-soinuak a {
+    text-indent: 3%;
+    text-align: center;
+    margin-top: 1rem;
+}
+.gure-soinuak a:hover {
+    font-weight: 700;
+}
+/* Dentro de 'gure-soinuak' hacemos id's de la diferente información que se va a mostrar y compartirán formato */
+#ezinbestekoak, #emakumeak, #besteak {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    flex-wrap: wrap;
+    margin-left: 2%;
+}
+/* Configuramos la disposición de las fotos, a, comportamiento al pasar el ratón... de las páginas que presentan los diferentes elementos que ofrecemos*/
+.irudia img {
+    width: 15vw;
+    height: 100%;
+    border: .3rem solid black;
+    margin: 1rem;
+}
+.irudia a {
+    display: block; /* El enlace se comporte como un bloque junto a su imagen y ocupa todo el ancho disponible */
+    text-indent: .5rem;
+    max-width: 15vw;
+    margin-left: 1.5rem;
+    min-height: 7rem;
+    word-wrap: break-word;
+}
+.irudia a:hover {
+    font-weight: 700;
+}
+/* Configuración de como se van a mostrar las descripciones de los items individuales */
+.soinuak-artikuluak {
+    width: 90%;
+    margin: 5% auto;
+    padding: 1rem;
+    border-top: .1rem solid #2f2f2f;
+    border-bottom: .1rem solid #2f2f2f;
+}
+.soinuak-artikuluak p {
+    text-indent: 3%;
+    text-align: justify;
+    margin-top: 1rem;
+}
